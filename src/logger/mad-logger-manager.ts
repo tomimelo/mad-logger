@@ -16,9 +16,7 @@ const defaultLoggerConfig: LoggerConfig = {
       format: 'YYYY-MM-DD HH:mm:ss.SSS'
     }),
     winston.format.simple(),
-    winston.format
-      .printf(info => `${info.timestamp} ${printMeta(info)} `.grey +
-            ` ${info.level}: ${info.message} `)
+    winston.format.printf(info => `${info.timestamp} ${printMeta(info)} `.grey + ` ${info.level}: ${info.message} `)
   )
 }
 
