@@ -8,22 +8,33 @@ import { LoggerManager } from './logger-manager'
 import { ConsoleTransportConfig, FileTransportConfig } from './transport-config'
 import { printMeta } from '../utils/print-meta'
 
+const defaultConsoleLoggerFormat: winston.Logform.Format = winston.format.combine(
+  winston.format.colorize(),
+  winston.format.timestamp({
+    format: 'YYYY-MM-DD HH:mm:ss.SSS'
+  }),
+  winston.format.simple(),
+  winston.format.printf(info => `${info.timestamp} ${printMeta(info)} `.grey + ` ${info.level}: ${info.message} `)
+)
+
+const defaultFileLoggerFormat: winston.Logform.Format = winston.format.combine(
+  winston.format.timestamp({
+    format: 'YYYY-MM-DD HH:mm:ss.SSS'
+  }),
+  winston.format.simple(),
+  winston.format.printf(info => `${info.timestamp} ${printMeta(info)}  ${info.level}: ${info.message} `)
+)
+
 const defaultLoggerConfig: LoggerConfig = {
   level: 'debug',
-  format: winston.format.combine(
-    winston.format.colorize(),
-    winston.format.timestamp({
-      format: 'YYYY-MM-DD HH:mm:ss.SSS'
-    }),
-    winston.format.simple(),
-    winston.format.printf(info => `${info.timestamp} ${printMeta(info)} `.grey + ` ${info.level}: ${info.message} `)
-  )
+  format: defaultConsoleLoggerFormat
 }
 
 const defaultTransportConfig = defaultLoggerConfig
 
 const defaultFileTransportConfig = {
   ...defaultTransportConfig,
+  format: defaultFileLoggerFormat,
   datePattern: 'YYYY-MM-DD',
   zippedArchive: true,
   maxSize: '20m',
