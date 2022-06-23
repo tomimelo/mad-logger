@@ -6,7 +6,7 @@ import { Logger } from './logger'
 import { LoggerConfig } from './logger-config'
 import { LoggerManager } from './logger-manager'
 import { ConsoleTransportConfig, FileTransportConfig } from './transport-config'
-import { printMeta } from './utils/print-meta'
+import { printMeta } from '../utils/print-meta'
 
 const defaultLoggerConfig: LoggerConfig = {
   level: 'debug',
