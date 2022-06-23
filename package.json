@@ -2,8 +2,10 @@
   "name": "mad-logger",
   "version": "1.0.0",
   "description": "Simple Node logger based on winston",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
+    "build": "tsc",
     "test": "test"
   },
   "repository": {
@@ -22,9 +24,17 @@
     "json"
   ],
   "author": "Tomás Melone",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/tomimelo/mad-logger/issues"
   },
-  "homepage": "https://github.com/tomimelo/mad-logger#readme"
+  "homepage": "https://github.com/tomimelo/mad-logger#readme",
+  "files": [
+    "lib/**/*"
+  ],
+  "dependencies": {
+    "colors": "^1.4.0",
+    "winston": "^3.8.0",
+    "winston-daily-rotate-file": "^4.7.1"
+  }
 }
