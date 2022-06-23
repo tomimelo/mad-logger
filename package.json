@@ -1,0 +1,30 @@
+{
+  "name": "mad-logger",
+  "version": "1.0.0",
+  "description": "Simple Node logger based on winston",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomimelo/mad-logger.git"
+  },
+  "keywords": [
+    "winston",
+    "logger",
+    "pino",
+    "stream",
+    "console",
+    "logs",
+    "logging",
+    "tools",
+    "json"
+  ],
+  "author": "Tomás Melone",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tomimelo/mad-logger/issues"
+  },
+  "homepage": "https://github.com/tomimelo/mad-logger#readme"
+}
