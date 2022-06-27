@@ -2,7 +2,6 @@ import 'colors'
 import winston from 'winston'
 import DailyRotateFile from 'winston-daily-rotate-file'
 import { MadLogger } from './mad-logger'
-import { Logger } from './logger'
 import { MadLoggerConfig } from './mad-logger-config'
 import { LoggerManager } from './logger-manager'
 import { MadConsoleTransportConfig, MadFileTransportConfig } from './mad-transport-config'
@@ -44,7 +43,7 @@ const defaultFileTransportConfig = {
 export class MadLoggerManager implements LoggerManager {
   private transports: Array<winston.transport> = []
 
-  public createLogger (name: string, config?: MadLoggerConfig): Logger {
+  public createLogger (name: string, config?: MadLoggerConfig): MadLogger {
     const loggerConfig = {
       ...defaultLoggerConfig,
       ...config
