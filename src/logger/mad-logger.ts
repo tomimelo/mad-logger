@@ -1,11 +1,11 @@
 import winston from 'winston'
 import { Logger } from './logger'
-import { LoggerConfig } from './logger-config'
+import { MadLoggerConfig } from './mad-logger-config'
 import { LoggerMeta } from './logger-meta'
 
 export class MadLogger implements Logger {
   private logger: winston.Logger
-  constructor (private readonly name: string, private readonly config: LoggerConfig, private readonly transports: Array<winston.transport>) {
+  constructor (private readonly name: string, private readonly config: MadLoggerConfig, private readonly transports: Array<winston.transport>) {
     this.logger = this.createLogger()
   }
 

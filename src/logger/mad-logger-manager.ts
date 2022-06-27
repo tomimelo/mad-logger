@@ -3,9 +3,9 @@ import winston from 'winston'
 import DailyRotateFile from 'winston-daily-rotate-file'
 import { MadLogger } from './mad-logger'
 import { Logger } from './logger'
-import { LoggerConfig } from './logger-config'
+import { MadLoggerConfig } from './mad-logger-config'
 import { LoggerManager } from './logger-manager'
-import { ConsoleTransportConfig, FileTransportConfig } from './transport-config'
+import { MadConsoleTransportConfig, MadFileTransportConfig } from './mad-transport-config'
 import { printMeta } from '../utils/print-meta'
 
 const defaultConsoleLoggerFormat: winston.Logform.Format = winston.format.combine(
@@ -25,7 +25,7 @@ const defaultFileLoggerFormat: winston.Logform.Format = winston.format.combine(
   winston.format.printf(info => `${info.timestamp} ${printMeta(info)}  ${info.level}: ${info.message} `)
 )
 
-const defaultLoggerConfig: LoggerConfig = {
+const defaultLoggerConfig: MadLoggerConfig = {
   level: 'debug',
   format: defaultConsoleLoggerFormat
 }
@@ -44,7 +44,7 @@ const defaultFileTransportConfig = {
 export class MadLoggerManager implements LoggerManager {
   private transports: Array<winston.transport> = []
 
-  public createLogger (name: string, config?: LoggerConfig): Logger {
+  public createLogger (name: string, config?: MadLoggerConfig): Logger {
     const loggerConfig = {
       ...defaultLoggerConfig,
       ...config
@@ -60,7 +60,7 @@ export class MadLoggerManager implements LoggerManager {
     }
   }
 
-  public getConsoleTransport (config?: ConsoleTransportConfig): winston.transports.ConsoleTransportInstance {
+  public getConsoleTransport (config?: MadConsoleTransportConfig): winston.transports.ConsoleTransportInstance {
     const consoleTransportConfig = {
       ...defaultTransportConfig,
       ...config
@@ -68,7 +68,7 @@ export class MadLoggerManager implements LoggerManager {
     return new winston.transports.Console(consoleTransportConfig)
   }
 
-  public getFileTransport (config: FileTransportConfig): DailyRotateFile {
+  public getFileTransport (config: MadFileTransportConfig): DailyRotateFile {
     const fileTransportConfig = {
       ...defaultFileTransportConfig,
       ...config

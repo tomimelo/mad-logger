@@ -1,11 +1,11 @@
 import { MadLoggerManager } from './mad-logger-manager'
 import { Logger } from './logger'
-import { ConsoleLoggerConfig } from './logger-config'
+import { MadConsoleLoggerConfig } from './mad-logger-config'
 import { LoggerMeta } from './logger-meta'
 
 export class MadConsoleLogger implements Logger {
   private logger: Logger
-  constructor (private readonly name: string, private readonly config?: ConsoleLoggerConfig) {
+  constructor (private readonly name: string, private readonly config?: MadConsoleLoggerConfig) {
     this.logger = this.createLogger()
   }
 
