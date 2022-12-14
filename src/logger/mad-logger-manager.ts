@@ -51,7 +51,7 @@ export class MadLoggerManager implements LoggerManager {
     return new MadLogger(name, loggerConfig, this.transports)
   }
 
-  public addTransport (transport: winston.transport | Array<winston.transport>) {
+  public addTransport (transport: winston.transport | Array<winston.transport>): void {
     if (Array.isArray(transport)) {
       this.transports.push(...transport)
     } else {

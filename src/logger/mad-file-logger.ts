@@ -5,7 +5,7 @@ import { LoggerMeta } from './logger-meta'
 
 export class MadFileLogger implements Logger {
   private logger: Logger
-  constructor (private readonly name: string, private readonly config: MadFileLoggerConfig) {
+  public constructor (private readonly name: string, private readonly config: MadFileLoggerConfig) {
     this.logger = this.createLogger()
   }
 
