@@ -20,5 +20,3 @@ export class MadLoggerStorage implements LoggerStorage<MadLogger> {
     return logger
   }
 }
-
-export const loggerStorage = new MadLoggerStorage()
