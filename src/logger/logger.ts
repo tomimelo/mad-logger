@@ -1,9 +1,7 @@
-import { LoggerMeta } from './logger-meta'
-
 export interface Logger {
-  info: (message: string, meta?: LoggerMeta) => void,
-  error: (message: string, meta?: LoggerMeta) => void,
-  warn: (message: string, meta?: LoggerMeta) => void,
-  debug: (message: string, meta?: LoggerMeta) => void,
-  child: (name: string, meta?: LoggerMeta) => Logger
+  id: string,
+  info(message: string): void,
+  error(message: string): void,
+  warn(message: string): void,
+  debug(message: string): void
 }

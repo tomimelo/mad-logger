@@ -1,7 +1,6 @@
-import { LoggerMeta } from './logger-meta'
-import { MadFileTransportConfig, MadTransportConfig } from './mad-transport-config'
-export interface MadLoggerConfig extends MadTransportConfig {
-  meta?: LoggerMeta
+import { MadFileTransportConfig } from './mad-transport-config'
+export interface MadLoggerConfig {
+  id?: string
 }
 
 export type MadConsoleLoggerConfig = MadLoggerConfig
