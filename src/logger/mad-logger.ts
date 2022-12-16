@@ -1,35 +1,35 @@
 import { Logger } from './logger'
 import pino, { Logger as PinoLogger } from 'pino'
 import { MadLoggerConfig } from './mad-logger-config'
-
-const generateId = (): string => Math.random().toString(16).slice(2)
+import { generateId } from '../utils/generate-id'
 
 export class MadLogger implements Logger {
   public id: string
   private logger: PinoLogger
 
   public constructor(private readonly config: MadLoggerConfig = {}) {
-    this.id = this.config.id || generateId()
-    this.logger = this.createLogger()
+    const {id, ...loggerConfig} = this.config
+    this.id = id || generateId()
+    this.logger = this.createLogger(loggerConfig)
   }
 
-  public info(message: string): void {
-    this.logger.info(message)
+  public info(objectOrMessage: object | string, message?: string): void {
+    this.logger.info(objectOrMessage, message)
   }
 
-  public error(message: string): void {
-    this.logger.error(message)
+  public error(objectOrMessage: object | string, message?: string): void {
+    this.logger.error(objectOrMessage, message)
   }
 
-  public warn(message: string): void {
-    this.logger.warn(message)
+  public warn(objectOrMessage: object | string, message?: string): void {
+    this.logger.warn(objectOrMessage, message)
   }
 
-  public debug(message: string): void {
-    this.logger.debug(message)
+  public debug(objectOrMessage: object | string, message?: string): void {
+    this.logger.debug(objectOrMessage, message)
   }
 
-  private createLogger(): PinoLogger {
-    return pino()
+  private createLogger(config: Partial<MadLoggerConfig>): PinoLogger {
+    return pino(config)
   }
 }

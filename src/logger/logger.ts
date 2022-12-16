@@ -1,7 +1,7 @@
 export interface Logger {
   id: string,
-  info(message: string): void,
-  error(message: string): void,
-  warn(message: string): void,
-  debug(message: string): void
+  info(objectOrMessage: object | string, message?: string): void,
+  error(objectOrMessage: object | string, message?: string): void,
+  warn(objectOrMessage: object | string, message?: string): void,
+  debug(objectOrMessage: object | string, message?: string): void
 }
